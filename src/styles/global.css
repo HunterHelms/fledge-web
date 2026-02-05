@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fledge-pink: #ffdfeb;
+  --color-fledge-yellow: #fff9de;
+  --color-fledge-mint: #e0f9f0;
+  --color-fledge-blue: #e0f2ff;
+  --color-fledge-purple: #f3e5f5;
+  --color-fledge-accent: #ff8fb1;
+}
+
+@layer base {
+  html {
+    @apply antialiased scroll-smooth;
+  }
+}

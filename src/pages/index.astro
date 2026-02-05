@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Fledge | Build Habits. Raise Your Pet.">
+	<main class="relative overflow-hidden">
+		<!-- Soft Background Blurs -->
+		<div class="absolute top-[-10%] left-[-10%] w-[50%] aspect-square bg-fledge-pink/50 blur-[120px] rounded-full pointer-events-none"></div>
+		<div class="absolute top-[20%] right-[-10%] w-[40%] aspect-square bg-fledge-mint/50 blur-[120px] rounded-full pointer-events-none"></div>
+		<div class="absolute bottom-[-10%] left-[20%] w-[60%] aspect-square bg-fledge-blue/40 blur-[120px] rounded-full pointer-events-none"></div>
+
+		<!-- Navigation -->
+		<nav class="container mx-auto px-6 py-8 flex justify-between items-center relative z-20">
+			<div class="flex items-center gap-3">
+				<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-3xl shadow-sm border border-white/20">🌱</div>
+				<span class="text-2xl font-black tracking-tighter text-stone-800 uppercase">Fledge</span>
+			</div>
+			<div class="hidden md:flex gap-10 text-sm font-bold tracking-tight text-stone-500 uppercase">
+				<a href="#adventure" class="hover:text-fledge-accent">The Adventure</a>
+				<a href="#pets" class="hover:text-fledge-accent">Your Pets</a>
+				<a href="#habits" class="hover:text-fledge-accent">Habits</a>
+			</div>
+			<a href="#" class="bg-fledge-accent text-white px-8 py-3 rounded-full text-sm font-black hover:bg-stone-800 shadow-lg transform hover:scale-105 active:scale-95">
+				Download
+			</a>
+		</nav>
+
+		<!-- Hero Section -->
+		<section class="container mx-auto px-6 pt-24 pb-40 text-center relative z-10">
+			<h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-stone-800 mb-8">
+				BUILD HABITS.<br />
+				<span class="text-fledge-accent italic underline decoration-fledge-pink underline-offset-8">RAISE YOUR PET.</span>
+			</h1>
+			<p class="text-lg md:text-2xl text-stone-500 max-w-2xl mx-auto font-medium leading-relaxed mb-12">
+				Turn your daily routines into an epic quest. Every habit you complete helps your virtual pet grow, evolve, and explore new worlds.
+			</p>
+			
+			<!-- iPhone Mockup (Fledge Style) -->
+			<div class="max-w-4xl mx-auto mt-20 relative group">
+				<div class="relative bg-white border-[10px] border-stone-800 rounded-[3rem] p-4 shadow-2xl aspect-[9/19.5] max-w-[320px] mx-auto overflow-hidden">
+					<div class="w-full h-full bg-fledge-mint rounded-[2rem] overflow-hidden relative flex flex-col items-center justify-center">
+						<!-- Simulated Fledge App UI -->
+						<div class="absolute top-8 px-6 w-full flex justify-between">
+							<div class="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-xl flex items-center justify-center text-lg shadow-sm font-bold">✨ 12</div>
+							<div class="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-xl flex items-center justify-center text-lg shadow-sm font-bold">❤️ 95</div>
+						</div>
+						
+						<!-- The Pet Character -->
+						<div class="text-9xl animate-bounce mb-8">🐣</div>
+						
+						<div class="mt-4 px-8 w-full space-y-3">
+							<div class="h-14 bg-white/90 rounded-2xl flex items-center px-4 gap-3 shadow-sm">
+								<div class="w-6 h-6 bg-fledge-pink rounded-full flex items-center justify-center text-xs">✓</div>
+								<div class="h-2 bg-stone-200 rounded-full w-24"></div>
+							</div>
+							<div class="h-14 bg-white/90 rounded-2xl flex items-center px-4 gap-3 shadow-sm opacity-60">
+								<div class="w-6 h-6 border-2 border-stone-100 rounded-full"></div>
+								<div class="h-2 bg-stone-100 rounded-full w-32"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Features (Flighty Style) -->
+		<section id="adventure" class="container mx-auto px-6 py-40 border-t border-stone-200/50">
+			<div class="grid md:grid-cols-3 gap-20">
+				<div class="space-y-6">
+					<div class="text-5xl">🥚</div>
+					<h3 class="text-2xl font-black tracking-tight text-stone-800">Hatch & Evolve</h3>
+					<p class="text-stone-500 leading-relaxed font-medium">Start with a mystery egg. As you hit your streaks, watch your companion evolve into unique forms.</p>
+				</div>
+				<div class="space-y-6">
+					<div class="text-5xl">🏔️</div>
+					<h3 class="text-2xl font-black tracking-tight text-stone-800">Explore Realms</h3>
+					<p class="text-stone-500 leading-relaxed font-medium">Unlock new habitats and scenic landscapes. Your pet explores further as your focus strengthens.</p>
+				</div>
+				<div class="space-y-6">
+					<div class="text-5xl">💍</div>
+					<h3 class="text-2xl font-black tracking-tight text-stone-800">Equip Gear</h3>
+					<p class="text-stone-500 leading-relaxed font-medium">Earn gems to customize your pet with legendary accessories, hats, and rare items.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Call to Action -->
+		<section class="container mx-auto px-6 py-40 text-center relative border-t border-stone-200/50 bg-fledge-mint/20">
+			<h2 class="text-4xl md:text-6xl font-black tracking-tight text-stone-800 mb-10">Start your journey.</h2>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+				<a href="#" class="bg-stone-800 text-white px-10 py-5 rounded-full text-lg font-black hover:bg-fledge-accent shadow-xl transform hover:scale-105 transition-all">
+					Download on App Store
+				</a>
+				<span class="text-stone-400 font-bold px-6 uppercase tracking-widest text-xs">Join 50,000+ habit builders</span>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="container mx-auto px-6 py-20 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-10">
+			<div class="text-stone-400 text-sm font-bold">
+				© 2026 Redmont Digital. Built by Ricky 🐙
+			</div>
+			<div class="flex gap-8 text-sm font-bold text-stone-400">
+				<a href="/privacy" class="hover:text-stone-800 uppercase tracking-widest text-xs">Privacy</a>
+				<a href="/terms" class="hover:text-stone-800 uppercase tracking-widest text-xs">Terms</a>
+				<a href="#" class="hover:text-stone-800 uppercase tracking-widest text-xs">Press Kit</a>
+			</div>
+		</footer>
+	</main>
+</Layout>

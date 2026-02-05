@@ -1,0 +1,51 @@
+---
+import '../styles/global.css'
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Fledge: The habit-building adventure. Build better habits while raising your virtual pet." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-fledge-yellow text-stone-800 font-['Inter',sans-serif]">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	h1, h2, h3, h4, .font-heading {
+		font-family: 'Outfit', sans-serif;
+	}
+	
+	* {
+		@apply transition-all duration-300;
+	}
+
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+	::-webkit-scrollbar-track {
+		background: #fff9de;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #ffdfeb;
+		border-radius: 4px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #ffcce0;
+	}
+</style>
