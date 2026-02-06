@@ -1,0 +1,16 @@
+# Fledge
+
+The habit-building adventure. Build better habits while raising your virtual pet.
+
+## Description
+Fledge turns daily routines into an epic quest. Every habit completed helps a virtual pet grow, evolve, and explore new worlds. Designed to make personal growth addictive and fun.
+
+## Core Features
+- **Hatch & Evolve:** Watch your companion grow through 50+ unique forms.
+- **Explore Realms:** Unlock scenic landscapes as your focus strengthens.
+- **Equip Gear:** Earn gems to customize your pet with rare items.
+- **Habit Tracking:** Streak commitments and visual progress bars.
+
+## Tech Specs
+- Platform: iOS 17+
+- Developer: Redmont Digital.
