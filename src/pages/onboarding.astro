@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Fledge | Start Your Quest">
+	<main class="min-h-screen bg-[#222] flex items-center justify-center p-6 relative overflow-hidden">
+		<!-- Retro Pixel Grid Overlay -->
+		<div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+		
+		<!-- Scanline Effect -->
+		<div class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,3px_100%] z-50 opacity-20"></div>
+
+		<div class="max-w-2xl w-full relative z-10">
+			<!-- Game Header -->
+			<div class="flex justify-between items-center mb-8 px-4 font-game text-[10px] text-fledge-accent animate-pulse">
+				<span>LEVEL 01</span>
+				<span>HABIT QUEST</span>
+				<span>XP: 0000</span>
+			</div>
+
+			<!-- Main Dialogue Box -->
+			<div class="bg-white border-[8px] border-stone-800 p-8 shadow-[12px_12px_0_0_rgba(0,0,0,0.2)] relative">
+				<!-- Step 1: Welcome -->
+				<div id="step-1" class="onboarding-step space-y-8">
+					<div class="flex justify-center mb-10">
+						<div class="text-[120px] animate-bounce">🥚</div>
+					</div>
+					<div class="space-y-4">
+						<h2 class="font-game text-xl text-stone-800 leading-relaxed text-center">WELCOME, ADVENTURER!</h2>
+						<p class="font-game text-[10px] text-stone-500 text-center leading-loose typewriter">YOUR JOURNEY TO BETTER HABITS BEGINS WITH A SINGLE EGG.</p>
+					</div>
+					<button onclick="nextStep(1)" class="w-full bg-fledge-accent border-4 border-stone-800 py-6 font-game text-white hover:bg-stone-800 transition-all shadow-[6px_6px_0_0_rgba(0,0,0,0.1)] active:shadow-none active:translate-x-1 active:translate-y-1">
+						CRACK THE EGG
+					</button>
+				</div>
+
+				<!-- Step 2: Choose Habit -->
+				<div id="step-2" class="onboarding-step hidden space-y-8">
+					<h2 class="font-game text-sm text-stone-800 mb-8">SELECT YOUR PRIMARY QUEST:</h2>
+					<div class="grid grid-cols-1 gap-4">
+						{['DAILY WALK', 'READ 10 PAGES', 'DRINK 2L WATER', 'MEDITATION'].map((habit) => (
+							<button onclick="selectHabit(this)" class="habit-option text-left p-4 border-4 border-stone-800 font-game text-[10px] hover:bg-fledge-pink transition-all">
+								{habit}
+							</button>
+						))}
+					</div>
+					<button onclick="nextStep(2)" id="habit-next" disabled class="w-full bg-stone-300 border-4 border-stone-800 py-6 font-game text-white opacity-50 cursor-not-allowed">
+						CONFIRM QUEST
+					</button>
+				</div>
+
+				<!-- Step 3: Choose Pet -->
+				<div id="step-3" class="onboarding-step hidden space-y-8 text-center">
+					<h2 class="font-game text-sm text-stone-800 mb-8">CHOOSE YOUR COMPANION:</h2>
+					<div class="flex justify-around mb-10">
+						<div onclick="selectPet('🐥')" class="pet-choice p-6 border-4 border-transparent hover:border-fledge-accent rounded-xl cursor-pointer">
+							<div class="text-7xl">🐥</div>
+							<p class="font-game text-[8px] mt-4">PIP</p>
+						</div>
+						<div onclick="selectPet('🦖')" class="pet-choice p-6 border-4 border-transparent hover:border-fledge-accent rounded-xl cursor-pointer">
+							<div class="text-7xl">🦖</div>
+							<p class="font-game text-[8px] mt-4">REX</p>
+						</div>
+						<div onclick="selectPet('🐲')" class="pet-choice p-6 border-4 border-transparent hover:border-fledge-accent rounded-xl cursor-pointer">
+							<div class="text-7xl">🐲</div>
+							<p class="font-game text-[8px] mt-4">DRAGO</p>
+						</div>
+					</div>
+					<button onclick="finishOnboarding()" id="pet-next" disabled class="w-full bg-stone-300 border-4 border-stone-800 py-6 font-game text-white opacity-50 cursor-not-allowed">
+						CHOOSE PET
+					</button>
+				</div>
+
+				<!-- Step 4: Final Success -->
+				<div id="step-4" class="onboarding-step hidden space-y-10 text-center py-10">
+					<div class="text-9xl animate-pulse" id="final-pet">🐣</div>
+					<div class="space-y-4">
+						<h2 class="font-game text-xl text-fledge-accent">QUEST STARTED!</h2>
+						<p class="font-game text-[10px] text-stone-500 leading-loose">YOU AND <span id="chosen-name">PIP</span> ARE READY TO CONQUER THE WORLD.</p>
+					</div>
+					<a href="/" class="block w-full bg-stone-800 border-4 border-stone-800 py-6 font-game text-white hover:bg-stone-700 shadow-[8px_8px_0_0_rgba(0,0,0,0.1)]">
+						ENTER THE REALM
+					</a>
+				</div>
+			</div>
+
+			<!-- Bottom Footer Tips -->
+			<div class="mt-8 text-center font-game text-[8px] text-stone-600 uppercase tracking-widest">
+				PRESS START TO CONTINUE • © 2026 FLEDGE GAMING CO.
+			</div>
+		</div>
+	</main>
+
+	<script is:inline>
+		let selectedHabitText = "";
+		let selectedPetIcon = "";
+
+		function nextStep(current) {
+			document.getElementById(`step-${current}`).classList.add('hidden');
+			document.getElementById(`step-${current + 1}`).classList.remove('hidden');
+		}
+
+		function selectHabit(el) {
+			// Reset all options
+			document.querySelectorAll('.habit-option').forEach(opt => {
+				opt.classList.remove('bg-fledge-pink', 'border-fledge-accent');
+				opt.classList.add('border-stone-800');
+			});
+			
+			// Highlight selected
+			el.classList.remove('border-stone-800');
+			el.classList.add('bg-fledge-pink', 'border-fledge-accent');
+			
+			selectedHabitText = el.innerText;
+			
+			// Enable button
+			const nextBtn = document.getElementById('habit-next');
+			nextBtn.disabled = false;
+			nextBtn.classList.remove('bg-stone-300', 'opacity-50', 'cursor-not-allowed');
+			nextBtn.classList.add('bg-fledge-accent');
+		}
+
+		function selectPet(pet) {
+			selectedPetIcon = pet;
+			
+			// Highlight logic
+			document.querySelectorAll('.pet-choice').forEach(choice => {
+				if (choice.innerText.includes(pet)) {
+					choice.classList.add('border-fledge-accent', 'bg-fledge-pink/20');
+				} else {
+					choice.classList.remove('border-fledge-accent', 'bg-fledge-pink/20');
+				}
+			});
+
+			const nextBtn = document.getElementById('pet-next');
+			nextBtn.disabled = false;
+			nextBtn.classList.remove('bg-stone-300', 'opacity-50', 'cursor-not-allowed');
+			nextBtn.classList.add('bg-fledge-accent');
+		}
+
+		function finishOnboarding() {
+			document.getElementById('final-pet').innerText = selectedPetIcon;
+			document.getElementById('chosen-name').innerText = selectedPetIcon === '🐥' ? 'PIP' : selectedPetIcon === '🦖' ? 'REX' : 'DRAGO';
+			nextStep(3);
+		}
+	</script>
+
+	<style>
+		.typewriter {
+			overflow: hidden;
+			white-space: nowrap;
+			margin: 0 auto;
+			letter-spacing: .15em;
+			animation: typing 3.5s steps(40, end);
+		}
+
+		@keyframes typing {
+			from { width: 0 }
+			to { width: 100% }
+		}
+	</style>
+</Layout>
